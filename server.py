@@ -46,11 +46,11 @@ def play():
 
 @application.route("/disp", methods=["POST"])
 def disp():
-    f=open("/home/aditya/Desktop/frnd/output.txt","r")
+    f=open("output.txt","r")
     data = f.read()
-    os.remove("/home/aditya/Desktop/frnd/output.txt")
-    inputFile = "/home/aditya/Desktop/frnd/input.txt"
-    hypo = "/home/aditya/Desktop/frnd/h.txt"
+    os.remove("output.txt")
+    inputFile = "input.txt"
+    hypo = "h.txt"
 
     os.system("perl blu1.pl %s < %s" % (inputFile,hypo))
     time.sleep(1)
@@ -58,16 +58,16 @@ def disp():
 
 @application.route("/blu1", methods=["POST"])
 def blu1():
-    f=open("/home/aditya/Desktop/frnd/bleu1.txt","r")
+    f=open("bleu1.txt","r")
     data = f.read()
-    os.remove("/home/aditya/Desktop/frnd/bleu1.txt")
+    os.remove("bleu1.txt")
     return jsonify(data)
 
 @application.route("/blu2", methods=["POST"])
 def blu2():
-    f=open("/home/aditya/Desktop/frnd/bleu.txt","r")
+    f=open("bleu.txt","r")
     data = f.read()
-    os.remove("/home/aditya/Desktop/frnd/bleu.txt")
+    os.remove("bleu.txt")
     return jsonify(data)
 
 def main():

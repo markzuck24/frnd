@@ -201,7 +201,7 @@ printf "BLEU = %.2f, %.1f/%.1f/%.1f (BP=%.3f, ratio=%.3f, hyp_len=%d, ref_len=%d
 
 
 
-my $filename = '/home/aditya/Desktop/frnd/bleu.txt';
+my $filename = 'bleu.txt';
 
 open(FH, '>>', $filename) or die $!;
 

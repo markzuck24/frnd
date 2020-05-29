@@ -26,7 +26,7 @@ def toolBot(dataInput):
 
     # file1.write(dataInput) 
     # file1.close()
-    directory = "/home/aditya/Desktop/frnd/ref"
+    directory = "ref"
     os.system("rm -rf "+directory)
     os.system("mkdir "+directory)
     chrome_options = webdriver.ChromeOptions()
@@ -42,8 +42,8 @@ def toolBot(dataInput):
     print('arguments done')
     driver.get("https://quillbot.com/")
 
-    inputFile = open('/home/aditya/Desktop/frnd/input.txt', 'r')
-    outputFile = open("/home/aditya/Desktop/aditya/output.txt", "a")
+    inputFile = open('input.txt', 'r')
+    outputFile = open("output.txt", "a")
     data= inputFile.read().strip() 
     array= []
     splat = data.split("\n\n")
@@ -73,11 +73,11 @@ def toolBot(dataInput):
                     print("\n\nInput No. "+str(string_i + 1))
                     print("\n\n\nParaphrase #1:\n\n" + firstParaphrase)
                     
-                    fileName="/home/aditya/Desktop/frnd/ref/r"+str(string_i + 1)+"_"+str(multiOutputCount)+".txt"
-                    output="/home/aditya/Desktop/frnd/output/o"+str(string_i + 1)+".txt"
-                    hypo="/home/aditya/Desktop/frnd/h.txt"
+                    fileName="ref/r"+str(string_i + 1)+"_"+str(multiOutputCount)+".txt"
+                    output="output/o"+str(string_i + 1)+".txt"
+                    hypo="h.txt"
                     fname = fileName
-                    displayFile="/home/aditya/Desktop/frnd/output.txt"
+                    displayFile="output.txt"
                     outputFile = open(fileName, "w",encoding="utf-8")
                     display = open(displayFile, "a",encoding="utf-8")
                     # fn = open(fname, "a",encoding="utf-8")
@@ -119,7 +119,7 @@ def toolBot(dataInput):
 
                             print("\n\n\n\nParaphrase #"+ str(multiOutputCount)+":\n\n"+laterParaphrase+"\n")
 
-                            fileName="/home/aditya/Desktop/frnd/ref/r"+str(string_i+1)+"_"+str(multiOutputCount)+".txt"
+                            fileName="ref/r"+str(string_i+1)+"_"+str(multiOutputCount)+".txt"
                             # fname = "/home/aditya/Desktop/frnd/filenames.txt"
                             fname += " "+fileName
                             outputFile = open(fileName, "w",encoding="utf-8")
@@ -129,7 +129,7 @@ def toolBot(dataInput):
                             outputFile.write(laterParaphrase)
                             ss = "\n\n#####################################################################"
 
-                            displayFile="/home/aditya/Desktop/frnd/output.txt"
+                            displayFile="output.txt"
                             display = open(displayFile, "a",encoding="utf-8")
                             display.write(ss.decode('utf-8'))
                             ss = "\n\n\n\nParaphrase #"+ str(multiOutputCount)+":\n\n"+laterParaphrase +"\n"        
@@ -140,7 +140,7 @@ def toolBot(dataInput):
 
                             outputFile.close()
                             display.close()
-                            hypo = "/home/aditya/Desktop/frnd/h.txt"
+                            hypo = "h.txt"
 
                             # os.system("perl blu.pl %s < %s" % (fileName,hypo))
                             # time.sleep(1)
@@ -182,7 +182,7 @@ def toolBot(dataInput):
     # time.sleep(1)
     # os.system("rm -rf "+directory)
 
-    with open("/home/aditya/Desktop/frnd/output.txt") as f:
+    with open("output.txt") as f:
         with open(output, "w") as f1:
             for line in f:
                 f1.write(line)
