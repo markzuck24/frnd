@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='button.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='site.css') }}">
+
+
+    <!-- <script src="rnd.js"></script> -->
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+    <title>Paraphrasing Tool</title>
+</head>
+
+<body style="background-color: #DBDBDB;">
+    <div class=" row ">
+
+        <div class="column ">
+            <h1 style=" text-align :center ">Input Sentence</h1>
+            <textarea style="border:3px solid #000000;" rows="16 " cols="70 " id="aditya">    
+                Enter the input sentence to be paraphrased here.
+            </textarea>
+        </div>
+        <div class="column ">
+            <h1 style=" text-align :center ">Paraphrased Sentences</h1>
+            <textarea style="border:3px solid #000000;" style="outline: thick;" style=" outline: solid; " style="font-family: 'Times New Roman', Times, serif; " rows="16 " cols="70 " id="output" readonly>
+                List of paraphrased sentences will be displayed here.
+            </textarea>
+        </div>
+
+
+
+
+
+    </div>
+
+    <div class=" row ">
+        <div class="button ">
+            <button id="btn1" class="button button1 ">Paraphrase</button>
+            <script>
+                $(document).ready(function() {
+                    $("#btn1").click(function() {
+                        $.post("/play", {
+                            'data': $('#aditya').val()
+                        }, function(output, status) {
+                            document.getElementById("output").innerHTML = output;
+                        });
+                    });
+                });
+            </script>
+        </div>
+        <div class="button ">
+            <button id="btn2" class="button button2 ">Display</button>
+
+            <script>
+                $(document).ready(function() {
+                    $("#btn2").click(function() {
+                        $.post("/disp ", {
+                            'data': $('#output').val()
+                        }, function(output, status) {
+                            document.getElementById("output").innerHTML = output;
+                        });
+                    });
+                });
+            </script>
+
+        </div>
+    </div>
+
+    <div class=" row ">
+
+        <div class="column ">
+            <!-- <h1 style=" text-align :center ">Input Sentence</h1> -->
+            <textarea style="border:3px solid #000000;" rows="7 " cols="70 " id="output1">    
+                BLEU scores for single reference sentence.
+            </textarea>
+        </div>
+        <div class="column ">
+            <!-- <h1 style=" text-align :center ">Paraphrased Sentences</h1> -->
+            <textarea style="border:3px solid #000000;" style="outline: thick;" style=" outline: solid; " style="font-family: 'Times New Roman', Times, serif; " rows="7 " cols="70 " id="output2" readonly>
+                BLEU scores for multiple reference sentences.
+            </textarea>
+        </div>
+
+
+
+
+
+    </div>
+
+
+    <div class=" row ">
+        <div class="button">
+            <button id="btn3" class="button button1 ">BLEU scores</button>
+            <script>
+                $(document).ready(function() {
+                    $("#btn3").click(function() {
+                        $.post("/blu1", {
+                            'data': $('#ouptput1').val()
+                        }, function(output, status) {
+                            document.getElementById("output1").innerHTML = output;
+                        });
+                    });
+                });
+            </script>
+        </div>
+
+        <div class="button ">
+            <button id="btn4" class="button button2 "> BLEU Scores</button>
+
+
+            <script>
+                $(document).ready(function() {
+                    $("#btn4").click(function() {
+                        $.post("/blu2", {
+                            'data': $('#output2').val()
+                        }, function(output, status) {
+                            document.getElementById("output2").innerHTML = output;
+                        });
+                    });
+                });
+            </script>
+
+        </div>
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+</body>
+
+</html>
+
+</html>

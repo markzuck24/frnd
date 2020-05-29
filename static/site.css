@@ -1,0 +1,21 @@
+.column {
+    float: left;
+    width: 50%;
+    color: #4D4D4D;
+    align-content: center;
+    /* margin: auto; */
+}
+
+
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    color: #4D4D4D;
+    /* float: left; */
+    align-content: center;
+    width: 50%;
+    /* margin: auto; */
+}
