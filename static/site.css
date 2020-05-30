@@ -3,7 +3,7 @@
     width: 50%;
     color: #4D4D4D;
     align-content: center;
-    /* margin: auto; */
+    margin: auto auto;
 }
 
 
@@ -17,5 +17,5 @@
     /* float: left; */
     align-content: center;
     width: 50%;
-    /* margin: auto; */
+    /* margin: auto auto; */
 }

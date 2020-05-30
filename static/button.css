@@ -13,6 +13,7 @@
 .button1 {
     background-color: #4D4D4D;
     position: center;
+    margin-left: 50px;
     /* position: absolute; */
 }
 
@@ -22,6 +23,7 @@
 .button2 {
     background-color: #4D4D4D;
     position: center;
+    margin-left: 180px;
     /* position: absolute; */
 }
 

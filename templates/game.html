@@ -22,19 +22,19 @@
     <title>Paraphrasing Tool</title>
 </head>
 
-<body style="background-color: #DBDBDB;">
+<body style="background-color: #CFD8DC;">
     <div class=" row ">
 
         <div class="column ">
-            <h1 style=" text-align :center ">Input Sentence</h1>
-            <textarea style="border:3px solid #000000;" rows="16 " cols="70 " id="aditya">    
-                Enter the input sentence to be paraphrased here.
+            <h1 style=" text-align :center">Single Reference</h1>
+            <textarea style="margin-left: 30px; border:3px solid #000000;" rows="16 " cols="70 " id="aditya">    
+                Enter the sentence to be paraphrased here.
             </textarea>
         </div>
         <div class="column ">
-            <h1 style=" text-align :center ">Paraphrased Sentences</h1>
-            <textarea style="border:3px solid #000000;" style="outline: thick;" style=" outline: solid; " style="font-family: 'Times New Roman', Times, serif; " rows="16 " cols="70 " id="output" readonly>
-                List of paraphrased sentences will be displayed here.
+            <h1 style="  text-align :center ">Multiple References</h1>
+            <textarea style="margin-left: 30px; border:3px solid #000000;" rows="16 " cols="70 " id="output" readonly>    
+                Paraphrased sentences will be displayed here.
             </textarea>
         </div>
 
@@ -81,13 +81,13 @@
 
         <div class="column ">
             <!-- <h1 style=" text-align :center ">Input Sentence</h1> -->
-            <textarea style="border:3px solid #000000;" rows="7 " cols="70 " id="output1">    
+            <textarea style=" margin-top: 30px; margin-left: 30px;border:3px solid #000000;" rows="7 " cols="70 " id="output1" readonly>    
                 BLEU scores for single reference sentence.
             </textarea>
         </div>
         <div class="column ">
             <!-- <h1 style=" text-align :center ">Paraphrased Sentences</h1> -->
-            <textarea style="border:3px solid #000000;" style="outline: thick;" style=" outline: solid; " style="font-family: 'Times New Roman', Times, serif; " rows="7 " cols="70 " id="output2" readonly>
+            <textarea style=" margin-top: 30px; margin-left: 30px;border:3px solid #000000;" rows="7 " cols="70 " id="output2" readonly>    
                 BLEU scores for multiple reference sentences.
             </textarea>
         </div>
@@ -101,7 +101,7 @@
 
     <div class=" row ">
         <div class="button">
-            <button id="btn3" class="button button1 ">BLEU scores</button>
+            <button id="btn3" class="button button1 ">BLEU Scores</button>
             <script>
                 $(document).ready(function() {
                     $("#btn3").click(function() {

@@ -56,7 +56,7 @@ def toolBot(dataInput):
         while firstParaphrase!=laterParaphrase and multiOutputCount!=5:
             try:
                 if (firstParaphrase == "-1"):
-                    fname=""
+                    fname="input.txt"
                     inputBox= WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "div#inputText")))
                     inputBox.clear()                                   
                     inputBox.send_keys(splat[string_i])
