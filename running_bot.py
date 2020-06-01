@@ -46,16 +46,14 @@ def toolBot(dataInput):
     outputFile = open("output.txt", "a")
     data= inputFile.read().strip() 
     array= []
-    splat = data.split("\n")
+    splat = data.split("\n\n")
     # splat = data.split("\n\n")
     #len(splat)
     for string_i in range(len(splat)):
         multiOutputCount=1
         firstParaphrase="-1"
         laterParaphrase="+1"
-        adi=0
-        while adi!=1:
-            adi+=1
+        while firstParaphrase!=laterParaphrase and multiOutputCount!=5:
             try:
                 if (firstParaphrase == "-1"):
                     fname="input.txt"
@@ -72,31 +70,80 @@ def toolBot(dataInput):
                         time.sleep(0.2)
                     outputBox=WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "div#outputText > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-true")))
                     firstParaphrase=outputBox.text
+                    print("\n\nInput No. "+str(string_i + 1))
+                    print("\n\n\nParaphrase #1:\n\n" + firstParaphrase)
                     
-                    fileName="r1.txt"
-                    
+                    fileName="ref/r"+str(string_i + 1)+"_"+str(multiOutputCount)+".txt"
+                    output="output/o"+str(string_i + 1)+".txt"
+                    hypo="h.txt"
                     fname = fileName
                     displayFile="output.txt"
-                    
+                    outputFile = open(fileName, "w",encoding="utf-8")
                     display = open(displayFile, "a",encoding="utf-8")
-                    fn = open(fname, "a",encoding="utf-8")
+                    # fn = open(fname, "a",encoding="utf-8")
 
                     outputFile.write(firstParaphrase)
-                    fn.write(firstParaphrase)
-                    ss="\n"
-                    
                     # fn.write(fileName.decode('utf-8')+" ")
-                    ss = ss.decode('utf-8')
-                    fn.write(ss)
-                   
-                   
+                    # ss = decode('utf-8')
+                    ss = "\n\n#####################################################################"
+                    display.write(ss.decode('utf-8'))
+                    ss = "\n\n\nParaphrase #1:\n\n " + firstParaphrase+"\n"
+                            
+                    display.write(ss.decode('utf-8'))
 
                     outputFile.close()
                     display.close()
                   
                     
-                   
-            
+                    # outputFile1 = '/'+outputFile
+                    # print outputFile1
+
+                    # os.system("perl blu.pl %s < %s" % (fileName,hypo))
+                    # time.sleep(1)
+        #            break
+                else:
+                    while(True):
+                        if multiOutputCount==5:
+                            break
+                        submit.click()
+                        time.sleep(0.6)
+                        while(submit.value_of_css_property('opacity')!='1'):
+                            time.sleep(0.2)
+                        laterParaphrase=outputBox.text
+                        if(laterParaphrase == firstParaphrase):
+                            break
+                        else:
+                            multiOutputCount+=1
+                            
+                            print("####################################################")
+
+                            print("\n\n\n\nParaphrase #"+ str(multiOutputCount)+":\n\n"+laterParaphrase+"\n")
+
+                            fileName="ref/r"+str(string_i+1)+"_"+str(multiOutputCount)+".txt"
+                            # fname = "/home/aditya/Desktop/frnd/filenames.txt"
+                            fname += " "+fileName
+                            outputFile = open(fileName, "w",encoding="utf-8")
+                            # fn = open(fname, "a",encoding="utf-8")
+                            
+                            # fn.write(fileName.decode('utf-8')+" ")
+                            outputFile.write(laterParaphrase)
+                            ss = "\n\n#####################################################################"
+
+                            displayFile="output.txt"
+                            display = open(displayFile, "a",encoding="utf-8")
+                            display.write(ss.decode('utf-8'))
+                            ss = "\n\n\n\nParaphrase #"+ str(multiOutputCount)+":\n\n"+laterParaphrase +"\n"        
+                            display.write(ss.decode('utf-8'))
+                            
+                            # display.write("\n\n\n\nParaphrase #"+ str(multiOutputCount)+":\n\n "+laterParaphrase)
+                            #display.write(firstParaphrase)
+
+                            outputFile.close()
+                            display.close()
+                            hypo = "h.txt"
+
+                            # os.system("perl blu.pl %s < %s" % (fileName,hypo))
+                            # time.sleep(1)
 
             except Exception as e:
                 print("exception occured",e)
@@ -128,19 +175,19 @@ def toolBot(dataInput):
                             print("Unhandled stopping")
                             break
     #inputFile.close()
-    
-    # os.system("perl blu.pl %s < %s" % (fname,hypo))
-    # time.sleep(1)
+    print(fname)
+    os.system("perl blu.pl %s < %s" % (fname,hypo))
+    time.sleep(1)
     # os.system("perl blu1.pl %s < %s" % (inputFile,hypo))
     # time.sleep(1)
     # os.system("rm -rf "+directory)
 
-    # with open("output.txt") as f:
-    #     with open(output, "w") as f1:
-    #         for line in f:
-    #             f1.write(line)
+    with open("output.txt") as f:
+        with open(output, "w") as f1:
+            for line in f:
+                f1.write(line)
     
-    
+
     driver.close()
 
 
