@@ -12,7 +12,6 @@ import sys
 import os
 import time
 from flask import Flask, request, render_template,jsonify
-from bot import toolBot
 
 parser = argparse.ArgumentParser()
 grid = None
@@ -32,16 +31,6 @@ application = Flask(__name__)
 @application.route("/", methods=["GET"])
 def index():
     return render_template('game.html')
-
-
-@application.route("/play", methods=["POST"])
-def play():
-    data = request.form['data']
-    toolBot(data)
-    # toolBot(data)
-    return jsonify("")
-
-
 
 
 @application.route("/disp", methods=["POST"])

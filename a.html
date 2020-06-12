@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='button.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='site.css') }}">
+
+
+    <!-- <script src="rnd.js"></script> -->
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+    <title>Paraphrasing Tool</title>
+</head>
+
+<body style="background-color: #fff8dc;">
+    <div class=" row ">
+        <!-- 
+        <div class="column ">
+            <h1 style=" text-align :center">Numerical Comparison</h1>
+            <form action="/action_page.php">
+                <label for="cars">Select a Language Pair:</label>
+                <select name="cars" id="cars">
+                  <optgroup label="WMT 14 Language Pairs">
+                    <option value="cs-en">cs-en</option>
+                    <option value="de-en">de-en</option>
+                    <option value="fr-en">fr-en</option>
+                    <option value="hi-en">hi-en</option>
+                    <option value="ru-en">ru-en</option>
+                  </optgroup>
+                  
+                </select>
+                <br><br>
+                <input type="submit" value="Submit">
+              </form>
+        </div> -->
+
+        <div class="column ">
+            <div id="v">
+            <img id="try"  src="{{ url_for('static',filename='Correlation Score Comparison.png') }}"/>
+            </div>
+
+            <h1 style="  text-align :center ">Graphical Comparison</h1>
+            <!-- <iframe  style=" text-align: justify; margin-left: 2%; background-color: #ffffff; width:600px; height:350px; border: 1px solid black;" src="" name="imgbox" id="imgbox">
+                <p id="a1">iframes are not supported by your browser.</p>
+            </iframe><br /> -->
+
+        </div>
+       
+        <div class="column ">
+            <h1 style="  text-align :center ">Graphical Comparison</h1>
+            <iframe frameborder="10px" scrolling="no" width="600" height="350" src="{{ url_for('static',filename='Correlation Score Comparison.png') }}" name="imgbox1" id="imgbox1">
+                <p>iframes are not supported by your browser.</p>
+            </iframe><br />
+        </div>
+
+
+
+
+
+    </div>
+
+    <div class=" row1 ">
+
+        <div class="column1 ">
+            <h3 style="  text-align :center ">BLEU Score Computation (Select Metric)</h3>
+            <div class="row">
+
+                <div class="column2">
+                    <div class="button ">
+                        <button id="btn1" class="button button1 ">Paraphrase</button>
+
+                    </div>
+                </div>
+                <div class="column2">
+                    <div class="button ">
+                        <button id="btn1" class="button button1 ">Paraphrase</button>
+
+                    </div>
+                </div>
+                <div class="column3">
+                    <div class="button ">
+                        <button id="btn1" class="button button2 ">Paraphrase</button>
+
+                    </div>
+                </div>
+                <div class="column2">
+                    <div class="button ">
+                        <button id="btn1" class="button button1 ">Paraphrase</button>
+
+                    </div>
+                </div>
+                <div class="column2">
+                    <div class="button ">
+                        <button id="btn1" class="button button1 ">Paraphrase</button>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="column1 ">
+            <h3 style="  text-align :center ">BLEU Score Comparison (Select Language Pair)</h3>
+            <div class="row">
+
+                <div class="column2">
+                    <div class="button ">
+                        <button id="btn1" class="button button1 ">Paraphrase</button>
+
+                    </div>
+                </div>
+                <div class="column2">
+                    <div class="button ">
+                        <button id="btn1" class="button button1 ">Paraphrase</button>
+
+                    </div>
+                </div>
+                <div class="column3">
+                    <div class="button ">
+                        <button id="btn1" class="button button2 ">Paraphrase</button>
+
+                    </div>
+                </div>
+                <div class="column2">
+                    <div class="button ">
+                        <button id="btn1" class="button button1 ">Paraphrase</button>
+
+                    </div>
+                </div>
+                <div class="column2">
+                    <div class="button ">
+                        <button id="btn1" class="button button1 ">Paraphrase</button>
+
+                    </div>
+                </div>
+
+            </div>
+      
+        </div>
+
+        <div class="column1 ">
+            <h3 style="  text-align :center ">Correlation Score Comparison</h3>
+            <form action="#"  target="#try">
+               
+                <label for="cars">Select a Language Pair:</label>
+                <select name="cars" id="cars">
+                  <optgroup label="WMT 14 Language Pairs">
+                    <option value="cs-en">cs-en</option>
+                    <option value="de-en">de-en</option>
+                    <option value="fr-en">fr-en</option>
+                    <option value="hi-en">hi-en</option>
+                    <option value="ru-en">ru-en</option>
+                  </optgroup>
+                </select>
+                <br><br>
+                <input type="submit" id="bbb" value="Submit">
+                <script>
+                   $('#bbb').click(function(){
+                       document.getElementById("#try").src="{{ url_for('static',filename='ru-en.png') }}";
+                    var e = document.getElementById("cars");
+                    var strUser = e.options[e.selectedIndex].value;
+                       if(strUser=="de-en")
+                       {
+                         var  val="{{ url_for('static',filename='de-en.png') }}";
+                       }
+    $('#imgbox1').attr('src', "{{ url_for('static',filename='de-en.png') }}");
+    });
+                </script>
+              </form>
+
+        </div>
+    </div>
+    <!-- 
+    <div class=" row ">
+        <div class="button ">
+            <button id="btn1" class="button button1 ">Paraphrase</button>
+            <script>
+                $(document).ready(function () {
+                    $("#btn1").click(function () {
+                        $.post("/play", {
+                            'data': $('#aditya').val()
+                        }, function (output, status) {
+                            document.getElementById("output").innerHTML = output;
+                        });
+                    });
+                });
+            </script>
+        </div>
+        <div class="button ">
+            <button id="btn2" class="button button2 ">Display</button>
+
+            <script>
+                $(document).ready(function () {
+                    $("#btn2").click(function () {
+                        $.post("/disp ", {
+                            'data': $('#output').val()
+                        }, function (output, status) {
+                            document.getElementById("output").innerHTML = output;
+                        });
+                    });
+                });
+            </script>
+
+        </div>
+    </div>
+
+
+
+    <div class=" row ">
+        <div class="button">
+            <button id="btn3" class="button button1 ">BLEU Scores</button>
+            <script>
+                $(document).ready(function () {
+                    $("#btn3").click(function () {
+                        $.post("/blu1", {
+                            'data': $('#ouptput1').val()
+                        }, function (output, status) {
+                            document.getElementById("output1").innerHTML = output;
+                        });
+                    });
+                });
+            </script>
+        </div>
+
+        <div class="button ">
+            <button id="btn4" class="button button2 "> BLEU Scores</button>
+
+
+            <script>
+                $(document).ready(function () {
+                    $("#btn4").click(function () {
+                        $.post("/blu2", {
+                            'data': $('#output2').val()
+                        }, function (output, status) {
+                            document.getElementById("output2").innerHTML = output;
+                        });
+                    });
+                });
+            </script>
+
+        </div> -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js "
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 "
+        crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js "
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM "
+        crossorigin="anonymous "></script>
+</body>
+
+</html>
+
+</html>

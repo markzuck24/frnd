@@ -1,7 +1,7 @@
 .column {
     float: left;
     width: 50%;
-    color: #4D4D4D;
+    color: #c11b17;
     align-content: center;
     margin: auto auto;
 }
@@ -13,9 +13,102 @@
     content: "";
     display: table;
     clear: both;
-    color: #4D4D4D;
+    color: #c11b17;
     /* float: left; */
     align-content: center;
     width: 50%;
     /* margin: auto auto; */
 }
+
+
+.column1 {
+    float: left;
+    width: 33%;
+    color: #c11b17;
+    align-content: center;
+    margin: auto auto;
+}
+
+
+/* Clear floats after the columns */
+
+.row1:after {
+    content: "";
+    display: table;
+    clear: both;
+    color: #c11b17;
+    /* float: left; */
+    align-content: center;
+    width: 50%;
+    /* margin: auto auto; */
+}
+
+.column2 {
+    float: left;
+    width: 50%;
+    color: #c11b17;
+    align-content: center;
+    margin: auto auto;
+}
+
+
+.column3 {
+    float: left;
+    width: 100%;
+    color: #c11b17;
+    align-content: center;
+    margin: auto auto;
+}
+
+
+.column4 {
+    float: left;
+    width: 33%;
+    color: #41a317;
+    align-content: center;
+    margin: auto auto;
+}
+
+.fit-image{
+    width: 100%;
+    object-fit: cover;
+    height: 300px; /* only if you want fixed height */
+    }
+
+    .center {
+        text-align:center;
+        }
+        
+
+        #imageHolder {
+            width: 600px;
+            height: 340px;
+            line-height: 350px;
+            padding: 0.3cm;
+            background-color:#ffffff;
+            border: 0.1cm solid #c11b17;
+        }
+        #imageHolder img {
+            max-width: 100%;
+            max-height:100%;
+            display: inline-block; /* Instead of display: block; */
+            /* margin: 0 auto; */
+            vertical-align: middle;
+           
+        }
+/* .mt-0 {
+    margin-top: 0 !important;
+  }
+  
+  .ml-1 {
+    margin-left: ($spacer * .25) !important;
+  }
+  
+  .px-2 {
+    padding-left: ($spacer * .5) !important;
+    padding-right: ($spacer * .5) !important;
+  }
+  
+  .p-3 {
+    padding: $spacer !important;
+  } */

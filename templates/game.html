@@ -22,20 +22,29 @@
     <title>Paraphrasing Tool</title>
 </head>
 
-<body style="background-color: #CFD8DC;">
-    <div class=" row ">
+<body style="background-color: #fff8dc;">
+    <div style="margin-top: 0.1cm;" class=" row ">
+
+        <div style="margin-top: 0.0cm;" class="column ">
+
+            <h1 style="  text-align :center ">Numerical Comparison</h1>
+
+            <div id="imageHolder">
+                <img id="img1" style="width: 100%; height: 100%;"
+                     />
+            </div>
+
+
+        </div>
 
         <div class="column ">
-            <h1 style=" text-align :center">Single Reference</h1>
-            <textarea style="margin-left: 30px; border:3px solid #000000;" rows="16 " cols="70 " id="aditya">    
-                Enter the sentence to be paraphrased here.
-            </textarea>
-        </div>
-        <div class="column ">
-            <h1 style="  text-align :center ">Multiple References</h1>
-            <textarea style="margin-left: 30px; border:3px solid #000000;" rows="16 " cols="70 " id="output" readonly>    
-                Paraphrased sentences will be displayed here.
-            </textarea>
+            <h1 style="  text-align :center ">Graphical Comparison</h1>
+
+            <div id="imageHolder">
+                <img id="img2" style="width: 100%; height: 100%;"
+                     />
+            </div>
+
         </div>
 
 
@@ -44,101 +53,158 @@
 
     </div>
 
-    <div class=" row ">
-        <div class="button ">
-            <button id="btn1" class="button button1 ">Paraphrase</button>
-            <script>
-                $(document).ready(function() {
-                    $("#btn1").click(function() {
-                        $.post("/play", {
-                            'data': $('#aditya').val()
-                        }, function(output, status) {
-                            document.getElementById("output").innerHTML = output;
-                        });
-                    });
-                });
-            </script>
-        </div>
-        <div class="button ">
-            <button id="btn2" class="button button2 ">Display</button>
+    <div class=" row1 ">
 
-            <script>
-                $(document).ready(function() {
-                    $("#btn2").click(function() {
-                        $.post("/disp ", {
-                            'data': $('#output').val()
-                        }, function(output, status) {
-                            document.getElementById("output").innerHTML = output;
-                        });
+        <div class="column1 ">
+            <h3 style="  text-align :center ">BLEU Score Computation</h3>
+            <form style="margin-left: 3cm;" action="#" target="#img1">
+
+                <label  for="cars1">Select a Metric  : </label>
+
+               
+                <select name="cars1" id="cars1">
+                    <optgroup label="BLEU Metric">
+                        <option value="BLEU">BLEU</option>
+                        <option value="BLEU-P1">BLEU-P1</option>
+                        <option value="BLEU-P2">BLEU-P2</option>
+                        <option value="BLEU-P3">BLEU-P3</option>
+                    </optgroup>
+                </select>
+                <br><br>
+                <input  class="button3" style="  margin: 1cm;" type="submit" id="bbb1" value="Submit">
+                <script>
+                    $('#bbb1').click(function () {
+                       var val1="";
+                       var val2="";
+                        var e = document.getElementById("cars1");
+                        var strUser = e.options[e.selectedIndex].value;
+                        if (strUser == "BLEU") {
+                            var val1 = "{{ url_for('static',filename='b.png') }}";
+                            var val2 = "{{ url_for('static',filename='ex.png') }}";
+                        }
+                        else  if (strUser == "BLEU-P1") {
+                            var val1 = "{{ url_for('static',filename='b1.png') }}";
+                            var val2 = "{{ url_for('static',filename='ex.png') }}";
+                        }
+                        else  if (strUser == "BLEU-P2") {
+                            var val1 = "{{ url_for('static',filename='b2.png') }}";
+                            var val2 = "{{ url_for('static',filename='ex.png') }}";
+                        }
+                        else 
+                        {
+                            var val1 = "{{ url_for('static',filename='b3.png') }}";
+                            var val2 = "{{ url_for('static',filename='ex.png') }}";
+                        }
+                        document.getElementById("cars1").value = "<?php echo $_GET['cars1'];?>";
+                        $('#img1').attr('src', val1);
+                        $('#img2').attr('src', val2);
                     });
-                });
-            </script>
+                </script>
+            </form>
+
+        </div>
+
+        <div class="column1 ">
+            <h3 style="  text-align :center ">Correlation Score Computation</h3>
+            <form style="margin-left: 3cm;" action="#" target="#img1">
+
+                <label  for="cars2">Select a Language Pair  :</label>
+
+                <select name="cars2" id="cars2">
+                    <optgroup label="WMT 14 Language Pairs">
+                        <option value="cs-en">cs-en</option>
+                        <option value="de-en">de-en</option>
+                        <option value="fr-en">fr-en</option>
+                        <option value="hi-en">hi-en</option>
+                        <option value="ru-en">ru-en</option>
+                    </optgroup>
+                </select>
+                <br><br>
+                <input  class="button3" style="  margin: 1cm;" type="submit" id="bbb2" value="Submit">
+                <script>
+                    $('#bbb2').click(function () {
+                       var val1="";
+                       var val2="";
+                        var e = document.getElementById("cars2");
+                        var strUser = e.options[e.selectedIndex].value;
+                        if (strUser == "cs-en") {
+                            var val1 = "{{ url_for('static',filename='cs-en.png') }}";
+                            var val2 = "{{ url_for('static',filename='BLEU Score Comparison (cs-en).png') }}";
+                        }
+                        else if(strUser == "de-en")
+                        {
+                            var val1 = "{{ url_for('static',filename='de-en.png') }}";
+                            var val2 = "{{ url_for('static',filename='BLEU Score Comparison (de-en).png') }}";
+                        }
+                        else if(strUser == "fr-en")
+                        {
+                            var val1 = "{{ url_for('static',filename='fr-en.png') }}";
+                            var val2 = "{{ url_for('static',filename='BLEU Score Comparison (fr-en).png') }}";
+                        }
+                        else if(strUser == "hi-en")
+                        {
+                            var val1 = "{{ url_for('static',filename='hi-en.png') }}";
+                            var val2 = "{{ url_for('static',filename='BLEU Score Comparison (hi-en).png') }}";
+                        }
+                        else
+                        {
+                            var val1 = "{{ url_for('static',filename='ru-en.png') }}";
+                            var val2 = "{{ url_for('static',filename='BLEU Score Comparison (ru-en).png') }}";
+                        }
+                        document.getElementById("cars2").value = "<?php echo $_GET['cars2'];?>";
+                        $('#img1').attr('src', val1);
+                        $('#img2').attr('src', val2);
+                    });
+                </script>
+            </form>
+
+        </div>
+        <div class="column1 ">
+            <h3 style="  text-align :center ">Correlation Score Comparison</h3>
+            <form style="margin-left: 3cm;" action="#" target="#img1">
+
+                <label  for="cars3">Select  :</label>
+
+                <select name="cars3" id="cars3">
+                    <optgroup label="Correlation Scores Comparison">
+                        <option value="Proposed Metrics">Proposed Metrics</option>
+                        <option value="With Baseline Metrics">With Baseline Metrics</option>
+                    </optgroup>
+                </select>
+                <br><br>
+                <input  class="button3" style="  margin: 1cm;" type="submit" id="bbb3" value="Submit">
+                <script>
+                    $('#bbb3').click(function () {
+                       var val1="";
+                       var val2="";
+                        var e = document.getElementById("cars3");
+                        var strUser = e.options[e.selectedIndex].value;
+                        if (strUser == "Proposed Metrics") {
+                            var val1 = "{{ url_for('static',filename='proposed bleu.png') }}";
+                            var val2 = "{{ url_for('static',filename='Correlation Score Comparison (BLEU Scores).png') }}";
+                        }
+                        else
+                        {
+                            var val1 = "{{ url_for('static',filename='Correlation Scores.png') }}";
+                            var val2 = "{{ url_for('static',filename='Correlation Score Comparison.png') }}";
+                        }
+                        document.getElementById("cars3").value = "<?php echo $_GET['cars3'];?>";
+                        $('#img1').attr('src', val1);
+                        $('#img2').attr('src', val2);
+                    });
+                </script>
+            </form>
 
         </div>
     </div>
 
-    <div class=" row ">
 
-        <div class="column ">
-            <!-- <h1 style=" text-align :center ">Input Sentence</h1> -->
-            <textarea style=" margin-top: 30px; margin-left: 30px;border:3px solid #000000;" rows="7 " cols="70 " id="output1" readonly>    
-                BLEU scores for single reference sentence.
-            </textarea>
-        </div>
-        <div class="column ">
-            <!-- <h1 style=" text-align :center ">Paraphrased Sentences</h1> -->
-            <textarea style=" margin-top: 30px; margin-left: 30px;border:3px solid #000000;" rows="7 " cols="70 " id="output2" readonly>    
-                BLEU scores for multiple reference sentences.
-            </textarea>
-        </div>
-
-
-
-
-
-    </div>
-
-
-    <div class=" row ">
-        <div class="button">
-            <button id="btn3" class="button button1 ">BLEU Scores</button>
-            <script>
-                $(document).ready(function() {
-                    $("#btn3").click(function() {
-                        $.post("/blu1", {
-                            'data': $('#ouptput1').val()
-                        }, function(output, status) {
-                            document.getElementById("output1").innerHTML = output;
-                        });
-                    });
-                });
-            </script>
-        </div>
-
-        <div class="button ">
-            <button id="btn4" class="button button2 "> BLEU Scores</button>
-
-
-            <script>
-                $(document).ready(function() {
-                    $("#btn4").click(function() {
-                        $.post("/blu2", {
-                            'data': $('#output2').val()
-                        }, function(output, status) {
-                            document.getElementById("output2").innerHTML = output;
-                        });
-                    });
-                });
-            </script>
-
-        </div>
-
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js "
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 "
+        crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js "
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM "
+        crossorigin="anonymous "></script>
 </body>
 
 </html>
